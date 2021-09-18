@@ -1,0 +1,25 @@
+.sunrise-block{
+    background-color: lightblue; 
+    color: black; 
+    width: 700px; 
+    padding: 10px; 
+    opacity: 0.9; 
+    margin-top: 10px;
+    border-radius: 10px;
+    vertical-align: center;
+}
+
+.hour-box{
+    background-color:lightyellow; 
+    border-radius: 10px; 
+    margin: 5px; 
+    text-align: center; 
+    width: 200px;
+    color:black
+}
+
+.inside-img{
+    width: 750px; 
+    height: 100%; 
+    text-align: left;
+}

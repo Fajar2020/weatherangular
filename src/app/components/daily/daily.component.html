@@ -1,0 +1,71 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li *ngFor="let item of cityWeatherData;let index = index" [attr.data-slide-to]="index" ngClass="index == 0 ? 'active' : ''"></li>
+    </ol>
+    <div class="carousel-inner">
+
+      <div class="carousel-item" *ngFor="let item of cityWeatherData;let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
+        <img src="{{item.imgBack}}" width="1100" height="500">
+        <div class="carousel-caption inside-img">
+          
+          <div class="sunrise-block">
+            <h3>{{city.name}} | {{item.dt}}</h3>
+            <p><img src="https://www.svgrepo.com/show/279158/sunrise.svg" class="img-icon"/> {{item.sunrise}} | {{item.sunset}} <img src="https://www.svgrepo.com/show/37753/sunset.svg" class="img-icon"/> | <img src="https://www.svgrepo.com/show/340680/moonrise.svg" class="img-icon"/> {{item.moonrise}} |  {{item.moonset}} <img src="https://www.svgrepo.com/show/340681/moonset.svg" class="img-icon"/>
+            </p>
+
+            <div class="row" style="text-align: center;">
+              <div class="col-md-3">
+                <h4>{{item.weather[0].description}}</h4>
+                <img src="http://openweathermap.org/img/wn/{{item.weather[0].icon}}.png" alt="{{item.weather[0].main}}" />
+              </div>
+              <div class="col-md-9" >
+                
+                <h4>Temp <span style="font-size: xx-small;"> feel | actual</span></h4>
+                <div class="row">
+                  <div class="col-md-3">
+                    <p>Morning</p>
+                    <p>{{item.feels_like.morn}} | {{item.temp.morn}}</p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>Day</p>
+                    <p>{{item.feels_like.day}} | {{item.temp.day}}</p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>Evening</p>
+                    <p>{{item.feels_like.eve}} | {{item.temp.eve}}</p>
+                  </div>
+                  <div class="col-md-3">
+                    <p>Night</p>
+                    <p>{{item.feels_like.night}} | {{item.temp.night}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          
+          <div class="row" style="width: 750px;">
+              <div class="col-md-2 hour-box" *ngFor="let h of item.hours;">
+                <p>{{h.hour}} <img src="http://openweathermap.org/img/wn/{{h.weather[0].icon}}.png" alt="{{h.weather[0].description}}" style="height: 30px;" /> <span style="font-size: xx-small;">{{h.weather[0].main}}</span></p>
+              </div>
+          </div>
+
+
+        </div>  
+      </div>
+      
+      
+    </div>
+    
+    
+    
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+

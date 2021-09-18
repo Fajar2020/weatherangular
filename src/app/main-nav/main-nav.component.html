@@ -1,0 +1,98 @@
+<!-- ng generate @angular/material:material-nav--name=main-nav -->
+
+<!--  -->
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="today">
+        <mat-icon class="space">
+          dashboard
+        </mat-icon>
+        Today
+      </a>
+      <a mat-list-item href="daily">
+        <mat-icon class="space">
+          calendar_today
+        </mat-icon>
+        Daily
+      </a>
+      <a mat-list-item href="threehours">
+        <mat-icon class="space">
+          list
+        </mat-icon>
+        3 Hour Interval
+      </a>
+<!--       
+      <a mat-list-item href="tendays">
+        <mat-icon class="space">
+          contact_support
+        </mat-icon>
+        10 Days
+      </a>
+      <a mat-list-item href="monthly">
+        <mat-icon class="space">
+          list
+        </mat-icon>
+        Monthly
+      </a>
+      <a mat-list-item href="feedback">
+        <mat-icon class="space">
+          file_copy
+        </mat-icon>
+        Feedback
+      </a> -->
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Simple Weather</span>
+      
+      <span class="spacer"></span>
+      
+      <div style="font-size: 14px;padding: 20px;">
+        <form>
+          <mat-form-field>
+            <input type="text" placeholder="Enter Location" matInput [formControl]="myControl"
+                 [matAutocomplete]="auto" >
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn.bind(this)" >
+              <mat-option *ngFor="let option of filteredValues" (onSelectionChange)="onSelectionChanged($event)" [value]="option" style="font-size: 14px;">
+                  {{option.name}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          
+          
+        </form>
+     
+      </div>
+
+      <button mat-raised-button color="accent" (click)="myLocation()">
+        My Location
+      </button>
+      
+      <!-- <span class="spacer"></span>
+      
+      <button mat-button [matMenuTriggerFor]="profileMenu">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #profileMenu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu> -->
+
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
